@@ -29,6 +29,9 @@
       <h2>Overview</h2>
             <p>
                 Blah Blah Blah put stuff here
+                An introduction that discusses the data you are analyzing, and the question or questions you are investigating. You should be able to explain what your data looks like (words are fine, but visualizations are often better).
+
+                We are analyzing the Reddit comment dataset, which contains all the comments from every subreddit since the beginning of Reddit's creation. 
             </p>
 
       <h2>Visualization</h2>
@@ -42,7 +45,41 @@
             
       <h2>Machine Learning Result</h2>
             <p>
-                Blah Blah Blah put stuff here
+              We queried the data using BigQuery, google's cloud-based sql database hoster. We first queried which subreddits had the most instances of certain words, then found a random sample of comments in those subreddits containing those words. We then performed sentiment analysis using Python's NLTK. We used nltk.sentiment.vader and looked at the compound sentiment for each sentence in comments containing specific terms. We then used the karma of the comment (reddit's internal user-based scoring system) as a multiplier for each comment's sentiment value. Our results for a few topics for queries in the year 2012 are as follows: 
+<br><br>
+<i>terroris:</i>
+[('videos', -0.27777676847463567), ('funny', -0.44213936613787297), ('AskReddit', -0.5141472180508921), ('worldnews', -0.5312172658953332), ('pics', -0.542098307867578), 
+('technology', -0.5480939448683424), ('WTF', -0.5647610645569621), ('todayilearned', -0.5651215341380449), ('politics', -0.6139812351075061), ('atheism', -0.662218852137148)]
+<br><br>
+<i>religion:</i>
+[('funny', 0.3501382815291174), ('IAmA', 0.17919999440089593), ('Christianity', 0.10055309119960676), ('islam', 0.07859625396825393), ('DebateReligion', 0.04346108000000003), 
+('worldnews', 0.035337072031344174), ('AskReddit', 0.0030677311660990045), ('atheism', -0.029793826942509934), ('politics', -0.05554917168372474), ('todayilearned', -0.16501514175286772)]
+<br><br>
+<i>dank:</i>
+[('IAmA', 0.2604343805704099), ('Diablo', 0.13420698653198654), ('Drugs', 0.07419405874499332), ('trees', 0.06467958369817846), ('pics', 0.05737116772612902), 
+('WTF', 0.006019963592233016), ('AskReddit', -0.0029031774197364395), ('funny', -0.012022085201793768), ('gaming', -0.03507182608695653), ('de', -0.17941697530864217)]
+<br><br>
+<i>christian:</i>
+[('todayilearned', 0.11660343075852472), ('DebateAChristian', 0.1119608116645781), ('DebateReligion', 0.09258401612657839), ('funny', 0.08912776729559749), 
+('Christianity', 0.07641066526744264), ('politics', 0.033686102922650514), ('atheism', 0.018078834486266918), ('AdviceAnimals', -0.003066405428150668), ('worldnews', -0.028129418728385175), ('AskReddit', -0.06716127872154447)]
+<br><br>
+<i>obama:</i>
+[('funny', 0.662100149700599), ('AdviceAnimals', 0.0906757980981491), ('Libertarian', 0.05010274381868131), ('atheism', 0.03868032069970845), 
+('PoliticalDiscussion', 0.012988632132739828), ('Conservative', 0.00013113807531382586), ('AskReddit', -0.019552647449169187), ('worldnews', -0.04866521709633649), 
+('politics', -0.0505538389501479), ('pics', -0.18414456101190466)]
+<br><br>
+<i>atheism:</i>
+[('funny', 0.15926742097701152), ('TrueAtheism', 0.11968237266470019), ('circlejerk', 0.09270557819575058), ('DebateReligion', 0.06302402937570734), 
+('circlebroke', 0.041043896738182456), ('AdviceAnimals', 0.017823144092998115), ('atheism', -0.014304163717284978), ('AskReddit', -0.021347387682739805), 
+('Christianity', -0.05806465737514514), ('todayilearned', -0.08566780354706688)]
+              <br><br>
+              In addition to elucidating some of the general trends of subreddit opinion, which are generally expected (proving our sentiment analysis is at least somewhat accurate), we also get a glimpse into which subreddits are Reddit's chosen means of discussion. r/funny, which is supposedly used for posting humorous pictures or jokes, is one of the top subreddits when looking at terms such as atheism, obama, christian[ity], and religion. This reflects upon Reddit's culture--it is not meant as a serious news-reporting site, but rather a casual online forum intended to spark lively discussion through non-intimidating alleys. A cavalier attitude and open mind are critical assets for browsing.
+
+              <br><br>
+              We also see that Reddit, in general, is relatively positive. In all topics we queried, barring "terroris," most subreddits are, on the whole, displaying positive sentiment. This shows that Reddit, overall, upvotes and promotes comments that emote positive vibes, and rejects those with negative ones. This shows a general trend of respect. For example, we might expect a negative sentiment value for "christian" in the subreddit r/atheism. However, the sentiment value is, very slightly, positive. Similarly, "obama" receives a positive sentiment value in r/Libertarian and r/Conservative, in which subreddits this would not seem likely. Even when subreddits discuss topics users might not approve of, users still upvote comments with positive and respectful tones. 
+
+              <br><br>
+              These results help paint a picture of what discussion and opinion on Reddit were like in the year 2012. We are looking to do this for other years as well, and plot the general trend over time of popular opinion and language patterns.
             </p>
 
       <h2>Discussion</h2>
