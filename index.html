@@ -55,10 +55,6 @@
 [('funny', 0.3501382815291174), ('IAmA', 0.17919999440089593), ('Christianity', 0.10055309119960676), ('islam', 0.07859625396825393), ('DebateReligion', 0.04346108000000003), 
 ('worldnews', 0.035337072031344174), ('AskReddit', 0.0030677311660990045), ('atheism', -0.029793826942509934), ('politics', -0.05554917168372474), ('todayilearned', -0.16501514175286772)]
 <br><br>
-<i>dank:</i>
-[('IAmA', 0.2604343805704099), ('Diablo', 0.13420698653198654), ('Drugs', 0.07419405874499332), ('trees', 0.06467958369817846), ('pics', 0.05737116772612902), 
-('WTF', 0.006019963592233016), ('AskReddit', -0.0029031774197364395), ('funny', -0.012022085201793768), ('gaming', -0.03507182608695653), ('de', -0.17941697530864217)]
-<br><br>
 <i>christian:</i>
 [('todayilearned', 0.11660343075852472), ('DebateAChristian', 0.1119608116645781), ('DebateReligion', 0.09258401612657839), ('funny', 0.08912776729559749), 
 ('Christianity', 0.07641066526744264), ('politics', 0.033686102922650514), ('atheism', 0.018078834486266918), ('AdviceAnimals', -0.003066405428150668), ('worldnews', -0.028129418728385175), ('AskReddit', -0.06716127872154447)]
@@ -72,8 +68,18 @@
 [('funny', 0.15926742097701152), ('TrueAtheism', 0.11968237266470019), ('circlejerk', 0.09270557819575058), ('DebateReligion', 0.06302402937570734), 
 ('circlebroke', 0.041043896738182456), ('AdviceAnimals', 0.017823144092998115), ('atheism', -0.014304163717284978), ('AskReddit', -0.021347387682739805), 
 ('Christianity', -0.05806465737514514), ('todayilearned', -0.08566780354706688)]
+<br><br>
+<i>dank (2012):</i>
+[('IAmA', 0.2604343805704099), ('Diablo', 0.13420698653198654), ('Drugs', 0.07419405874499332), ('trees', 0.06467958369817846), ('pics', 0.05737116772612902), 
+('WTF', 0.006019963592233016), ('AskReddit', -0.0029031774197364395), ('funny', -0.012022085201793768), ('gaming', -0.03507182608695653), ('de', -0.17941697530864217)]
+<br><br>
+<i>dank (2016-01)</i>
+[('DotA2', 0.12608532650325546), ('Eve', 0.10386469124280598), ('GlobalOffensive', 0.04968710813076279), ('trees', 0.03906293228109041), ('me_irl', 0.02794241293532336), ('leagueoflegends', -0.014172785999530214), ('thenetherlands', -0.029279749694749717), ('AskReddit', -0.10200494846191926), ('rocketbeans', -0.127175190793066), ('de', -0.19618041949646664)]
               <br><br>
               In addition to elucidating some of the general trends of subreddit opinion, which are generally expected (proving our sentiment analysis is at least somewhat accurate), we also get a glimpse into which subreddits are Reddit's chosen means of discussion. r/funny, which is supposedly used for posting humorous pictures or jokes, is one of the top subreddits when looking at terms such as atheism, obama, christian[ity], and religion. This reflects upon Reddit's culture--it is not meant as a serious news-reporting site, but rather a casual online forum intended to spark lively discussion through non-intimidating alleys. A cavalier attitude and open mind are critical assets for browsing.
+
+              <br><br>
+              Another trend we can very obviously see here is the rise of particular words, like "dank", which have become more popularized through gaming and recreational drugs. The top subreddits containing the most common use of the word "dank" from 2012 and 2016 are quite different, reflecting the rise of such games as DotA, CS:GO, and League Of Legends, and the accompanying gamer culture.  
 
               <br><br>
               We also see that Reddit, in general, is relatively positive. In all topics we queried, barring "terroris," most subreddits are, on the whole, displaying positive sentiment. This shows that Reddit, overall, upvotes and promotes comments that emote positive vibes, and rejects those with negative ones. This shows a general trend of respect. For example, we might expect a negative sentiment value for "christian" in the subreddit r/atheism. However, the sentiment value is, very slightly, positive. Similarly, "obama" receives a positive sentiment value in r/Libertarian and r/Conservative, in which subreddits this would not seem likely. Even when subreddits discuss topics users might not approve of, users still upvote comments with positive and respectful tones. 
@@ -83,20 +89,21 @@
             </p>
 
       <h2>Discussion</h2>
-            <p>
-                The hardest part of the project we have encountered so far is being able to use all of the data. There is over a TB of data so it is impossible to analyze all of it on our local machines.
-            </p>
 
             <p>
-                Our initial insight is that Reddit is an extremely rich community of different minded people who will be sure to allow us to get many opinons on topics.
+                The hardest part of the project we have encountered so far is being able to use all of the data. There is over a TB of data so it is impossible to analyze all of it on our local machines. For now, we've been taking random samples of the data from months we have particular interest in to get a statistically general idea of the entire dataset. Another difficulty we've encountered is deciding what ML algorithms to use in order to get the best information out of our data. 
             </p>
-
             <p>
-                Not yet, our final web applicaiton will depend on hosting all this data through AWS and allowing users to query it for different opinons about different things.
+                We have derived some initial insights with random sampling of the data, some of which we have highlighted above. Some of these insights include various trends in language as well as culture. We plan to do more random sampling for topics over various years to continue to get more insights into how language and culture have changed on Reddit, but we think we have a good start.  
             </p>
-
+            <p>
+                Not yet, our final web application will depend on hosting all this data through AWS and allowing users to query it for different opinons about different things. We've also modified our initial focus as well, which requires adjusting of various methods we need to take. 
+            </p>
             <p>
                 The next big challenge we will have is setting up a remote server on AWS and loading our data on there, and also learning to use distributed machine learning tools.
+            </p>
+            <p>
+              We think we are on track with our project. We have successfully extracted data and derived some meaningful results from it, and we are assured of the possibility of more, knowing how rich the comment dataset is. We are convinced of its integrity and are confident in our ability to wrangle it.
             </p>
         <div class="col-md-2"></div>
     </div>  
