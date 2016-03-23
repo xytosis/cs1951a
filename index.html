@@ -28,10 +28,10 @@
 
       <h2>Overview</h2>
             <p>
-                Blah Blah Blah put stuff here
-                An introduction that discusses the data you are analyzing, and the question or questions you are investigating. You should be able to explain what your data looks like (words are fine, but visualizations are often better).
-
-                We are analyzing the Reddit comment dataset, which contains all the comments from every subreddit since the beginning of Reddit's creation. 
+                We are analyzing the Reddit comment dataset, which contains all the comments from every subreddit since the beginning of Reddit's creation. We want to be able to use this data to answer a variety of questions, such as Reddit's opinion over time on certain subjects, and the evolution of Internet language over time.
+            </p>
+            <p>
+                The data is deceptively simple; each comment is basically a JSON object with metadata about it, such as when it was posted, the subreddit it was posted under, the user who posted it, ect.
             </p>
 
       <h2>Visualization</h2>
@@ -40,12 +40,12 @@
             </p>
 
             <p>
-                The visualzation allows users to look at the top 200 most popular subreddits throughout the history of reddit. It even includes subreddits that were banned. This data is interesting to us because it will allow us to put an extra dimension on our analysis. Instead of just returning Reddit's opinon about some topic, we can model how Reddit's opinon has fluctated over the years. We will hopefully be able to accurate model controversial social issues as well and see how opinions about them have changed as the years have gone by.
+                The visualzation allows users to look at the top 200 most popular subreddits throughout the history of reddit. It even includes subreddits that were banned. This data is interesting to us because it will allow us to put an extra dimension on our analysis. Instead of just returning Reddit's opinon about some topic, we can model how Reddit's opinon has fluctated over the years. We will hopefully be able to accurate model controversial social issues as well and see how opinions about them have changed as the years have gone by. One thing to note for this visualization is that, since the data is too big for us right now, we took enough random samples (100k per time period) to get an accurate representation of the dataset.
             </p>
             
       <h2>Machine Learning Result</h2>
             <p>
-              We queried the data using BigQuery, google's cloud-based sql database hoster. We first queried which subreddits had the most instances of certain words, then found a random sample of comments in those subreddits containing those words. We then performed sentiment analysis using Python's NLTK. We used nltk.sentiment.vader and looked at the compound sentiment for each sentence in comments containing specific terms. We then used the karma of the comment (reddit's internal user-based scoring system) as a multiplier for each comment's sentiment value. Our results for a few topics for queries in the year 2012 are as follows: 
+              We queried the data using BigQuery, Google's cloud-based sql database hoster. We first queried which subreddits had the most instances of certain words, then found a random sample of comments in those subreddits containing those words. We then performed sentiment analysis using Python's NLTK. We used nltk.sentiment.vader and looked at the compound sentiment for each sentence in comments containing specific terms. We then used the karma of the comment (reddit's internal user-based scoring system) as a multiplier for each comment's sentiment value. Our results for a few topics for queries in the year 2012 are as follows: 
 <br><br>
 <i>terroris:</i>
 [('videos', -0.27777676847463567), ('funny', -0.44213936613787297), ('AskReddit', -0.5141472180508921), ('worldnews', -0.5312172658953332), ('pics', -0.542098307867578), 
@@ -103,7 +103,7 @@
                 The next big challenge we will have is setting up a remote server on AWS and loading our data on there, and also learning to use distributed machine learning tools.
             </p>
             <p>
-              We think we are on track with our project. We have successfully extracted data and derived some meaningful results from it, and we are assured of the possibility of more, knowing how rich the comment dataset is. We are convinced of its integrity and are confident in our ability to wrangle it.
+              We think we are on track with our project. We have successfully extracted data and derived some meaningful results from it, and we are assured of the possibility of more, knowing how rich the comment dataset is. We are convinced of its integrity and are confident in our ability to wrangle it. In other words, we think it is definitely worth proceeding with our project.
             </p>
         <div class="col-md-2"></div>
     </div>  
