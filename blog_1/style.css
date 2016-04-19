@@ -1,0 +1,9 @@
+.crop {
+	width: 110%;
+	height: 380px;
+	overflow: hidden;
+}
+
+#solr_image {
+	width: 110%;
+}

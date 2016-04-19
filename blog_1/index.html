@@ -14,7 +14,6 @@
   <!--# JAVASCRIPT #}-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> <!-- JQUERY -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script> <!-- D3.js -->
-  <script src="viz.js"></script> <!-- Write your D3.js code for the heatmap in this file -->
 </head>
 
 <body>
@@ -29,7 +28,21 @@
       <h2>Members</h2>
       The members of this group are mjzhu, bp12, eh49, and amai.
 
-      <h2>Overview</h2>
+      <h2>What We Did This Week</h2>
+
+      <h3>Solr</h3>
+      <p>
+        We have managed to set up Solr on an AWS node and are in the process of inputting as much Reddit comments data into it as we can. The unfortunate part is that importing data into Solr is fairly slow, so we have to wait a while before we can import the entire dataset. Luckily, Solr is able to index imported data on the fly, so we can still work with the data we have in Solr so far. As of writing, we have sucessfully imported about 50 GB of data into Solr, which is around 1/3 of our total data. I have included a screenshot of the admin panel for our Solr instance.
+
+        <div class="crop">
+        <img id="solr_image" src="images/solr.png">
+        </div>
+        We are also able to write queries to the Solr API; accessing the API is extremely simple, it is basically a get request to the web address of the Solr server. We did run into a bit of trouble with Solr however. First, I had a lot of trouble figuring out how to set up predefined schemas in Solr when I was working on Solr 5, as I had to make a bunch of GET requests in order to update the schema. However, luckily, Solr 6 allows users to easily modify the schema through the web interface. This was important because Solr defaults to multivalued attributes; while this might be fine for some applications, it doesn't allow the results to be sorted, which is something we may want (sorting results by votes).
+        <br>
+        Another bit of trouble we ran into was figuring out how to increase the JVM heap space for Solr. We need this because the default 512Mb is not enough for uploading large documents; however, even though the Solr documentation mentions that people might want to increase the heap size, they give NO explicit instructions on how to do so. It took hours of searching to finally find some obscure formum thread that mentions modifying the run scripts of Solr.
+        <br>
+        As for what still needs to be done with Solr, there isn't much else. We just have to wait patiently for the remainder of the data to be uploaded. I wrote some scripts that semi-automate the process so I can work on other things in the meantime.
+      </p>
             
         <div class="col-md-2"></div>
     </div>  
