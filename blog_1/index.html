@@ -42,6 +42,8 @@
         Another bit of trouble we ran into was figuring out how to increase the JVM heap space for Solr. We need this because the default 512Mb is not enough for uploading large documents; however, even though the Solr documentation mentions that people might want to increase the heap size, they give NO explicit instructions on how to do so. It took hours of searching to finally find some obscure formum thread that mentions modifying the run scripts of Solr.
         <br>
         As for what still needs to be done with Solr, there isn't much else. We just have to wait patiently for the remainder of the data to be uploaded. I wrote some scripts that semi-automate the process so I can work on other things in the meantime.
+        <br>
+        We have started setting up some pieces of the front end. We are using Flask for our web server, and are in the process of setting up an AWS instance to host our site. 
       </p>
             
         <div class="col-md-2"></div>
