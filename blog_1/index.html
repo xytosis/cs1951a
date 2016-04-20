@@ -45,6 +45,20 @@
         <br>
         We have started setting up some pieces of the front end. We are using Flask for our web server, and are in the process of setting up an AWS instance to host our site. 
       </p>
+
+      <h3>Spark</h3>
+      <p>
+      	We are still in the process of setting up the Spark infrastructure that will allow us to run ad-hoc Spark jobs on the fly. So far, we have set up a Spark cluster on EC2 using Spark's EC2 launch script and have verified that it works by running some examples. Below are pictures of ssh-ing into our cluster and running the SparkPi example on the cluster.
+      	<div>
+        <img class="" ="spark_image" src="images/spark1.jpg">
+        <img class="spark_image" src="images/spark2.jpg">
+        </div>
+        Additionally, we have set up the <a href="https://github.com/spark-jobserver/spark-jobserver">spark-jobserver</a>, which will allow us to make REST calls to a server to start Spark jobs and return results. Below are pictures of starting the job server, uploading a word count example jar onto the job server, then telling the job server to run the word count example.
+        <div>
+        <img class="" ="spark_image" src="images/spark3.jpg">
+        <img class="spark_image" src="images/spark4.jpg">
+        </div>
+      </p>
             
         <div class="col-md-2"></div>
     </div>  

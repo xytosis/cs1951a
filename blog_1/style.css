@@ -7,3 +7,8 @@
 #solr_image {
 	width: 110%;
 }
+
+img {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
