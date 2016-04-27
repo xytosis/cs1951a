@@ -43,7 +43,7 @@
       We had a bit of trouble with Flask because it is not a production-ready server, so many things being served on it is extremely slow. The solution is to run Flask with gunicorn on an nginx server, which took a while to set up since this is the first time most of us have even touched Flask. There was a very annoying bug where we tried to get gunicorn to actually run our flask app, but it turned out that the error was, for some reason, caused by naming our object "app" instead of "application". Changing that made the entire thing work, and now we have a dummy visualization set up <a href="http://ec2-54-175-87-193.compute-1.amazonaws.com/">here</a>. This is proof that our webapp is up and running, and we just have to fill in the server code to make the appropriate requests and serve the correct pages.
 
       <h3>Algorithms</h3>
-            
+      We have begun to look at prototypes for many of the algorithms that we will want to implement. In particular, we are currently using IntelliJ IDEA CE to build a prototype of the Flesch-Kinkaid grade level test. One trouble that we are running in to is how to accurately count the number of syllables in each reddit comment, and we are looking into using a built-in syllable dictionary through Java to count the number of syllables. 
         <div class="col-md-2"></div>
     </div>  
 
