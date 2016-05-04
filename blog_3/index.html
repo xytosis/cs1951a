@@ -31,7 +31,7 @@
 
       <h2>What We Did This Week</h2>
       <h3>Spark</h3>
-      and are in the process of deployment. We have written a few small Spark jobs and are integrating the various separate parts of our programs together.
+      For spark, we deleted our old single slave cluster and created a cluster with 4 slaves. We were able to get spark jobs running on the cluster that use http calls to get comments from Solr and perform simple word counts on the comments. In order to get our Spark jobs running within the job-server, we need to add it as a dependency to the sbt project containing the Spark jobs then modify the Spark jobs to implement the job-server interface. This modification will be minimal and should not take very much work.
 
       <h3>Solr</h3>
       We are still in the process of uploading all the Reddit comment dataset. We ran into a problem where we could not download the Solr data efficiently, but we believe this is due to our instance's micro size. We will upgrade our instance to large to see if this increases download speed. 
