@@ -38,8 +38,15 @@
       
       <h3>Flask</h3>
       We have created more visualizations using D3 and have facilitated a connection from the Flask app to the Spark job server.
+      We created a sample visualization that uses stored data in order to display the relative size of subreddits to the user. More impressively, we set up a visualization that allows a user to dynamically choose a word or phrase, and we graph the usage of that word or phrase over time. This visualization calls a flask handler that directly queries Solr and gets the number of instances during each time period.
+      Here is a screen shot of the word "cool"
+      <img src="cool.png">
+      Here is another one of a less popular word
+      <img src="dank.png">
+      This is the raw number of comments we found with that word in it. Remember, we sampled about 1/5 of reddit comments, so these values are relative. Also, reddit is rapidly growing, so each word will naturally increase in usage. We plan to add a visualization that shows the relative increase in popularity of a word. You can play with our current webapp <a href="http://ec2-54-175-87-193.compute-1.amazonaws.com/">here</a>.
 
       <h3>Machine Learning</h3>
+      We have implemented a few machine learning algorithms for Spark, and we have to connect them with Spark by figuring out how to run a Spark job. One example algorithm is the reading level algorithm. We are also working on writing a few others like sentiment analysis that we can plot in our visualizations graph.
 
         <div class="col-md-2"></div>
     </div>  
