@@ -46,7 +46,7 @@
       This is the raw number of comments we found with that word in it. Remember, we sampled about 1/5 of reddit comments, so these values are relative. Also, reddit is rapidly growing, so each word will naturally increase in usage. We plan to add a visualization that shows the relative increase in popularity of a word. You can play with our current webapp <a href="http://ec2-54-175-87-193.compute-1.amazonaws.com/">here</a>.
 
       <h3>Machine Learning</h3>
-      We have implemented a few machine learning algorithms for Spark, and we have to connect them with Spark by figuring out how to run a Spark job. One example algorithm is the reading level algorithm. We are also working on writing a few others like sentiment analysis that we can plot in our visualizations graph.
+      We have implemented a few machine learning algorithms for Spark, and we have to connect them with Spark by figuring out how to run a Spark job. One example algorithm is the Flesch-Kinkaid reading level algorithm, for which we have code written in Scala to integrate with Spark. In addition, we are looking over how to use Spark's built-in LDA algorithm for analyzing topic models related to our Reddit comments. We are also working on writing a few others like sentiment analysis that we can plot in our visualizations graph.
 
         <div class="col-md-2"></div>
     </div>  
