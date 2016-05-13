@@ -52,7 +52,7 @@ Taffer,redditgw,1,2010-02-04T08:37:13Z,"I would be happy to join, not sure if I 
 
 This not only makes the data easier to manage, it also reduces the amount of data that we need to process.
 			<h2>Hypothesis</h2>
-
+			Our web application was meant as more of an exploratory sandbox tool because of its on-the-fly and flexible nature instead of being just a means of presenting precomputed results. Thus, we expect the user to mess around with the different queries to find out interesting results on their own about particular topics or subreddits they care about. That being said, we did have certain expectations about what kind of results we would see and what we wanted to learn about. We wanted to use reddit comments as a source of internet language so we could discover trends of certain words or topics over time. More specifically to reddit, we wanted the application to be a means of exploring differences between various popular subreddits in terms of word usage, sentiments, and other defining characteristics. 
 			<h2>Methodology</h2>
 			<h4>Data Integration</h4>
 			The data integration step involved moving the data out of BigQuery and into our Solr server. Solr is a document indexing search engine that allows users to insert a huge number of documents and specify indexing, and supports fast full text search. In theory, moving the data from BigQuery to Solr is simple; BigQuery allows users to download query results in CSV format and Solr allows CSV documents to be uploaded. However, the reality was more involved. We had to first register for Google Compute since our queries were too large to be downloaded directly, then we had to set up a script that could be run with <code>nohup</code> so that we could continuously upload files to Solr.
@@ -64,30 +64,13 @@ This not only makes the data easier to manage, it also reduces the amount of dat
 			We also found that running flask remotely was extremely slow, so we set up an nginx server that used gunicorn to launch the flask code; this allowed us to quickly and easily deploy a production ready server.
 
 			<h2>Challenges</h2>
-
 	
 			<h2>Results</h2>
 			Because we focused on on creating a data exploration tool that could run machine learning jobs on the fly, instead of having a single deep result, we were able to come up with numerous shallower results and even give the power to any user to come up with interesting results on their own.
 
 			We will include some of the more interesting results we came up with during the creation and testing of our final web app.
 			<br>
-      <img src="asoif_popularity_over_time.png">
-      <img src="gameofthrones_popularity_over_time.png">
-      <img src="treefiddy_karma_count.png"><br>
-
-      Topic Words <br>
-Topic 1 tax, time, first, man, stewart <br>
-Topic 2 pot, say, law <br>
-Topic 3 gay, government <br>
-Topic 4 just, america, corporate <br>
-Topic 5 americans, said, snowden, son, votes <br>
-Topic 6 american, amendment, congress, united <br>
-Topic 7 now, pay <br>
-Topic 8 elizabeth, warren, big, banks, republicans, million, sen <br>
-Topic 9 court, supreme, public, vote <br>
-Topic 10  run, jail, today <br>
-
-for subreddit: politics 2008-2012<br>
+			
 
 			<h2>Percent of Proposal Achieved</h2>
 			We believe we have achieved 115% out of our 125% of our project proposal. Our backend infrastructure and web app has many different features and is completely functional and has a aesthetic and intuitive UI. BigQuery was surprisingly quite fast, even though this still meant queries would still take ~10 seconds or so. Spark was unfortunately non-functional (which is why don't give ourselves the full 125%) and even if it was, we decided it would not have been fast enough to be worth using it to compute ML queries on the fly. 
@@ -116,6 +99,7 @@ for subreddit: politics 2008-2012<br>
 			<br><br>
 			On the Spark side of things, we might experiment with using Spark streaming instead of the standard Spark jobs. Spark streaming would mean that our application would run a single long-running streaming job instead of launching a new job upon each user query. This modification would get rid of the time overhead of starting a new job on each query and would make queries more responsive, but also brings in a slew of other technological challenges. 
 			
+			<div class="col-md-2"></div>
 		</div>
 </body>
 
