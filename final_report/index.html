@@ -55,6 +55,8 @@ This not only makes the data easier to manage, it also reduces the amount of dat
       <h2>Hypothesis</h2>
 
       <h2>Methodology</h2>
+      <h4>Data Integration</h4>
+      The data integration step involved moving the data out of BigQuery and into our Solr server. Solr is a document indexing search engine that allows users to insert a huge number of documents and specify indexing, and supports fast full text search. In theory, moving the data from BigQuery to Solr is simple; BigQuery allows users to download query results in CSV format and Solr allows CSV documents to be uploaded. However, the reality was more involved. We had to first register for Google Compute since our queries were too large to be downloaded directly, then we had to set up a script that could be run with <code>nohup</code> so that we could continuously upload files to Solr.
 
       <h2>Challenges</h2>
 
