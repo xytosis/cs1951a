@@ -51,7 +51,6 @@ Taffer,redditgw,1,2010-02-04T08:37:13Z,"I would be happy to join, not sure if I 
 </code></pre>
 
 This not only makes the data easier to manage, it also reduces the amount of data that we need to process.
-
 			<h2>Hypothesis</h2>
 
 			<h2>Methodology</h2>
@@ -64,8 +63,14 @@ This not only makes the data easier to manage, it also reduces the amount of dat
 
 			We also found that running flask remotely was extremely slow, so we set up an nginx server that used gunicorn to launch the flask code; this allowed us to quickly and easily deploy a production ready server.
 
-
+			<h2>Challenges</h2>
+	
 			<h2>Results</h2>
+			Because we focused on on creating a data exploration tool that could run machine learning jobs on the fly, instead of having a single deep result, we were able to come up with numerous shallower results and even give the power to any user to come up with interesting results on their own.
+
+			We will include some of the more interesting results we came up with during the creation and testing of our final web app.
+			<br>
+			
 
 			<h2>Percent of Proposal Achieved</h2>
 			We believe we have achieved 100% of our project proposal. Our web app has many different features and is mostly functional. BigQuery was surprisingly quite fast, even though this still meant queries would still take ~10 seconds or so. Spark was unfortunately non-functional and even if it was, we decided it would not have been fast enough to be worth using it to compute ML queries on the fly. 
@@ -93,9 +98,10 @@ This not only makes the data easier to manage, it also reduces the amount of dat
 			If we were to redesign our application's architecture we would first look into different ways of processing a large amount of data very responsively. Our current project uses the entirety of the data for aggregation queries, but only does relatively small random samples for queries involving machine learning because of the computational limits of running Python on a single machine. It might be possible to get significant speed increases on the storage end by using a distributed SQL database then creating materialized views that have schemas specifically designed to handle each type of query. If we stuck with Solr, we would experiment with using Solr in its cluster mode to see if using a cluster instead of a single instance would provide significant performance gains. If we were to stick with Spark we could also store raw comments in text form in HDFS, as Spark is meant to be used with HDFS and this pairing might let us load in much more data than some sort of database would.
 			<br><br>
 			On the Spark side of things, we might experiment with using Spark streaming instead of the standard Spark jobs. Spark streaming would mean that our application would run a single long-running streaming job instead of launching a new job upon each user query. This modification would get rid of the time overhead of starting a new job on each query and would make queries more responsive, but also brings in a slew of other technological challenges. 
-
-				<div class="col-md-2"></div>
+			
+			<div class="col-md-2"></div>
 		</div>  
+>>>>>>> f98b57f1280f0abeba4daad80efe6ab24a97a91d
 
 </body>
 
