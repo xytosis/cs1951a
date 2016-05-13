@@ -30,9 +30,27 @@
       The members of this group are mjzhu, bp12, eh49, and amai.
 
       <h2>Abstract</h2>
-      
+      Our project focused on creating a tool that allowed users to simply and easily interact with massive amounts of data and explore trends in Internet language over a number of domains. We randomly sampled a 100GB+ subset of every reddit comment in existance and loaded them into our own data pipeline in order to be able to run fast and rich queries on the data. Our front end web application allows users to run many different types of interactive queries on our data, and we present the results in an informative visualization. Our goal was to develop a tool that would allow anyone to view trends and gain insight from one of the biggest digital communities in existence.
 
       <h2>Data</h2>
+      The source of our data is the entire reddit comment database, which is hosted on Google BigQuery, a cloud based SQL-like database for storing massive amounts of data. The data was so big that it had to be split up into different years and even months. Fortunately for us, the data had already been relatively cleaned and put into a nice query-able storage, so we did not have to put too much of an effort to clean it further (except for removing newlines and getting rid of unneeded fields). Each row of data contained the following fields: <code>body, score_hidden, archived, name, author, author_flair_text, downs, created_utc, subreddit_id, link_id, parent_id, score, retrieved_on, controversiality</code>
+      <code>gilded, id, subreddit, ups, distinguished, author_flair_css_class, removal_reason</code>. Here is a sample row of data:
+
+<pre><code>
+body,score_hidden,archived,name,author,author_flair_text,downs,created_utc,<br>subreddit_id,link_id,parent_id,score,retrieved_on,controversiality,gilded,id,subreddit,ups,distinguished,author_flair_css_class,removal_reason
+
+"No direct tie to technology/programming, but very interesting and relivant.  Great read",false,true,t1_c02gs6n,jwstaddo2,,0,1195062204,t5_3b8o,t3_60hwa,<br>t3_60hwa,0,1427422828,0,0,c02gs6n,joel,0,,,
+</code></pre>
+
+      Clearly, many of these fields were unnecessary for our purposes, and some, like <code>ups</code> and <code>downs</code> were always null (may have been left over from reddit's first database and was never updated). Thus, we only kept <code>author</code> which is the username of the author of the comment, <code>subreddit</code> which is the name of the subreddit of the post, <code>score</code> which is the number of votes (can be negative),<code>created_utc</code> which is the timestamp the comment was posted, <code>body</code> which is the actual comment, and <code>gilded</code> which only very highly regarded comments have. Now a row of our data looks like:
+
+<pre><code>
+author,subreddit,votescore,created_utc,body,gilded
+
+Taffer,redditgw,1,2010-02-04T08:37:13Z,"I would be happy to join, not sure if I am going to play much, but numbers helps I guess. Only have original and <br>factions",0
+</code></pre>
+
+This not only makes the data easier to manage, it also reduces the amount of data that we need to process.
 
       <h2>Hypothesis</h2>
 
