@@ -57,15 +57,23 @@ This not only makes the data easier to manage, it also reduces the amount of dat
       <h2>Methodology</h2>
       <h4>Data Integration</h4>
       The data integration step involved moving the data out of BigQuery and into our Solr server. Solr is a document indexing search engine that allows users to insert a huge number of documents and specify indexing, and supports fast full text search. In theory, moving the data from BigQuery to Solr is simple; BigQuery allows users to download query results in CSV format and Solr allows CSV documents to be uploaded. However, the reality was more involved. We had to first register for Google Compute since our queries were too large to be downloaded directly, then we had to set up a script that could be run with <code>nohup</code> so that we could continuously upload files to Solr.
+      <h4>Machine Learning</h4>
+      For our project, we tested a variety of machine learning techniques. Some of the machine learning attributes that we examined were Ridge Regression, Logistic Regression and Topic Modeling. For Ridge Regression and Logistic Regression, we used scikit-learn, while for Topic Modeling, we used gensim, which is a topic modeling package available online. 
+      <h4>Web App</h4>
+      We created our web application using Python flask. We launched an ec2 instance on AWS and set up our flask server there; this was convenient for us because we could use the machine learning libraries in Python, and because everyone was familair with Python. We set up a number of different server AJAX handlers for each visualization we wanted to display, and each visualization also had its own javascript file. in order to maintain readability and structure.
+
+      We also found that running flask remotely was extremely slow, so we set up an nginx server that used gunicorn to launch the flask code; this allowed us to quickly and easily deploy a production ready server.
 
       <h2>Challenges</h2>
-
+  
       <h2>Results</h2>
 
       <h2>Percent of Proposal Achieved</h2>
       We believe we have achieved 100% of our project proposal. Our web app has many different features and is mostly functional. BigQuery was surprisingly quite fast, even though this still meant queries would still take ~10 seconds or so. Spark was unfortunately non-functional and even if it was, we decided it would not have been fast enough to be worth using it to compute ML queries on the fly. 
       <br>
       For the ML that we did, we found interesting results for topic-modeling, reading levels, and sentiment analysis. <interesting surprises> 
+      <h4>Machine Learning</h4>
+      For the topic modeling portion, we were able to generate 5 topics and 5 words when we ran the python program on a set of data. 
 
       <h2>Future Topics</h2>
       We noticed partway through our project that our app sacrificed more intensive, in-depth queries for on-the-fly capabilities. We thought our project would be more impressive if we did not give it precomputed information, and instead  
