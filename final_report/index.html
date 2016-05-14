@@ -2,39 +2,39 @@
 <html>
 <head>
 
-	<title>Final Report</title>
-	<meta charset="utf-8">
-	<meta name="description" content="">
-	<meta name="author" content=""> <!-- Your name here -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Final Report</title>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="author" content=""> <!-- Your name here -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-	<!--# CSS #}-->
-	<link rel="stylesheet" href="style.css"> <!-- Add your CSS to this file -->
+  <!--# CSS #}-->
+  <link rel="stylesheet" href="style.css"> <!-- Add your CSS to this file -->
 
-	<!--# JAVASCRIPT #}-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> <!-- JQUERY -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script> <!-- D3.js -->
-	<script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+  <!--# JAVASCRIPT #}-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> <!-- JQUERY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script> <!-- D3.js -->
+  <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
 </head>
 
 <body>
 
 <div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-8">
-						<div class="page-header center">
-								<h1>Final Report: <small>&laquo;Reddata&raquo;<img src="redditguy.png" style="width:50px;"></small></h1>
-						</div>
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="page-header center">
+                <h1>Final Report: <small>&laquo;Reddata&raquo;<img src="redditguy.png" style="width:50px;"></small></h1>
+            </div>
 
-			<h2>Members</h2>
-			The members of this group are mjzhu, bp12, eh49, and amai.
+      <h2>Members</h2>
+      The members of this group are mjzhu, bp12, eh49, and amai.
 
-			<h2>Abstract</h2>
-			Our project focused on creating a tool that allowed users to simply and easily interact with massive amounts of data and explore trends in Internet language over a number of domains. We randomly sampled a 100GB+ subset of every reddit comment in existance and loaded them into our own data pipeline in order to be able to run fast and rich queries on the data. Our front end web application allows users to run many different types of interactive queries on our data, and we present the results in an informative visualization. Our goal was to develop a tool that would allow anyone to view trends and gain insight from one of the biggest digital communities in existence.
+      <h2>Abstract</h2>
+      Our project focused on creating a tool that allowed users to simply and easily interact with massive amounts of data and explore trends in Internet language over a number of domains. We randomly sampled a 100GB+ subset of every reddit comment in existance and loaded them into our own data pipeline in order to be able to run fast and rich queries on the data. Our front end web application allows users to run many different types of interactive queries on our data, and we present the results in an informative visualization. Our goal was to develop a tool that would allow anyone to view trends and gain insight from one of the biggest digital communities in existence.
 
-			<h2>Data</h2>
-			The source of our data is the entire reddit comment database, which is hosted on Google BigQuery, a cloud based SQL-like database for storing massive amounts of data. The data was so big that it had to be split up into different years and even months. Fortunately for us, the data had already been relatively cleaned and put into a nice query-able storage, so we did not have to put too much of an effort to clean it further (except for removing newlines and getting rid of unneeded fields). Each row of data contained the following fields: <code>body, score_hidden, archived, name, author, author_flair_text, downs, created_utc, subreddit_id, link_id, parent_id, score, retrieved_on, controversiality</code>
-			<code>gilded, id, subreddit, ups, distinguished, author_flair_css_class, removal_reason</code>. Here is a sample row of data:
+      <h2>Data</h2>
+      The source of our data is the entire reddit comment database, which is hosted on Google BigQuery, a cloud based SQL-like database for storing massive amounts of data. The data was so big that it had to be split up into different years and even months. Fortunately for us, the data had already been relatively cleaned and put into a nice query-able storage, so we did not have to put too much of an effort to clean it further (except for removing newlines and getting rid of unneeded fields). Each row of data contained the following fields: <code>body, score_hidden, archived, name, author, author_flair_text, downs, created_utc, subreddit_id, link_id, parent_id, score, retrieved_on, controversiality</code>
+      <code>gilded, id, subreddit, ups, distinguished, author_flair_css_class, removal_reason</code>. Here is a sample row of data:
 
 <pre><code>
 body,score_hidden,archived,name,author,author_flair_text,downs,created_utc,<br>subreddit_id,link_id,parent_id,score,retrieved_on,controversiality,gilded,id,subreddit,ups,distinguished,author_flair_css_class,removal_reason
@@ -42,7 +42,7 @@ body,score_hidden,archived,name,author,author_flair_text,downs,created_utc,<br>s
 "No direct tie to technology/programming, but very interesting and relivant.  Great read",false,true,t1_c02gs6n,jwstaddo2,,0,1195062204,t5_3b8o,t3_60hwa,<br>t3_60hwa,0,1427422828,0,0,c02gs6n,joel,0,,,
 </code></pre>
 
-			Clearly, many of these fields were unnecessary for our purposes, and some, like <code>ups</code> and <code>downs</code> were always null (may have been left over from reddit's first database and was never updated). Thus, we only kept <code>author</code> which is the username of the author of the comment, <code>subreddit</code> which is the name of the subreddit of the post, <code>score</code> which is the number of votes (can be negative),<code>created_utc</code> which is the timestamp the comment was posted, <code>body</code> which is the actual comment, and <code>gilded</code> which only very highly regarded comments have. Now a row of our data looks like:
+      Clearly, many of these fields were unnecessary for our purposes, and some, like <code>ups</code> and <code>downs</code> were always null (may have been left over from reddit's first database and was never updated). Thus, we only kept <code>author</code> which is the username of the author of the comment, <code>subreddit</code> which is the name of the subreddit of the post, <code>score</code> which is the number of votes (can be negative),<code>created_utc</code> which is the timestamp the comment was posted, <code>body</code> which is the actual comment, and <code>gilded</code> which only very highly regarded comments have. Now a row of our data looks like:
 
 <pre><code>
 author,subreddit,votescore,created_utc,body,gilded
@@ -51,23 +51,25 @@ Taffer,redditgw,1,2010-02-04T08:37:13Z,"I would be happy to join, not sure if I 
 </code></pre>
 
 This not only makes the data easier to manage, it also reduces the amount of data that we need to process.
-			<h2>Hypothesis</h2>
-			Our web application was meant as more of an exploratory sandbox tool because of its on-the-fly and flexible nature instead of being just a means of presenting precomputed results. Thus, we expect the user to mess around with the different queries to find out interesting results on their own about particular topics or subreddits they care about. That being said, we did have certain expectations about what kind of results we would see and what we wanted to learn about. We wanted to use reddit comments as a source of internet language so we could discover trends of certain words or topics over time. More specifically to reddit, we wanted the application to be a means of exploring differences between various popular subreddits in terms of word usage, sentiments, and other defining characteristics. 
-			<h2>Methodology</h2>
-			<h4>Data Integration</h4>
-			The data integration step involved moving the data out of BigQuery and into our Solr server. Solr is a document indexing search engine that allows users to insert a huge number of documents and specify indexing, and supports fast full text search. In theory, moving the data from BigQuery to Solr is simple; BigQuery allows users to download query results in CSV format and Solr allows CSV documents to be uploaded. However, the reality was more involved. We had to first register for Google Compute since our queries were too large to be downloaded directly, then we had to set up a script that could be run with <code>nohup</code> so that we could continuously upload files to Solr.
-			<h4>Machine Learning</h4>
-			For our project, we tested a variety of machine learning techniques. Some of the machine learning attributes that we examined were Ridge Regression, Logistic Regression and Topic Modeling. For Ridge Regression and Logistic Regression, we used scikit-learn, while for Topic Modeling, we used gensim, which is a topic modeling package available online. 
-			<h4>Web App</h4>
-			We created our web application using Python flask. We launched an ec2 instance on AWS and set up our flask server there; this was convenient for us because we could use the machine learning libraries in Python, and because everyone was familair with Python. We set up a number of different server AJAX handlers for each visualization we wanted to display, and each visualization also had its own javascript file. in order to maintain readability and structure.
+      <h2>Hypothesis</h2>
+      Our web application was meant as more of an exploratory sandbox tool because of its on-the-fly and flexible nature instead of being just a means of presenting precomputed results. Thus, we expect the user to mess around with the different queries to find out interesting results on their own about particular topics or subreddits they care about. That being said, we did have certain expectations about what kind of results we would see and what we wanted to learn about. We wanted to use reddit comments as a source of internet language so we could discover trends of certain words or topics over time. More specifically to reddit, we wanted the application to be a means of exploring differences between various popular subreddits in terms of word usage, sentiments, and other defining characteristics. 
+      <h2>Methodology</h2>
+      <h4>Data Integration</h4>
+      The data integration step involved moving the data out of BigQuery and into our Solr server. Solr is a document indexing search engine that allows users to insert a huge number of documents and specify indexing, and supports fast full text search. In theory, moving the data from BigQuery to Solr is simple; BigQuery allows users to download query results in CSV format and Solr allows CSV documents to be uploaded. However, the reality was more involved. We had to first register for Google Compute since our queries were too large to be downloaded directly, then we had to set up a script that could be run with <code>nohup</code> so that we could continuously upload files to Solr.
+      <h4>Machine Learning</h4>
+      For our project, we tested a variety of machine learning techniques. Some of the machine learning attributes that we examined were Ridge Regression, Logistic Regression, LASSO, and Topic Modeling. For Ridge Regression, Logistic Regression, and LASSO we used scikit-learn, while for Topic Modeling, we used gensim, which is a topic modeling package available online. 
 
-			We also found that running flask remotely was extremely slow, so we set up an nginx server that used gunicorn to launch the flask code; this allowed us to quickly and easily deploy a production ready server.
 
-			<h2>Results</h2>
-			Because we focused on on creating a data exploration tool that could run machine learning jobs on the fly, instead of having a single deep result, we were able to come up with numerous shallower results and even give the power to any user to come up with interesting results on their own.
+      <h4>Web App</h4>
+      We created our web application using Python flask. We launched an ec2 instance on AWS and set up our flask server there; this was convenient for us because we could use the machine learning libraries in Python, and because everyone was familair with Python. We set up a number of different server AJAX handlers for each visualization we wanted to display, and each visualization also had its own javascript file. in order to maintain readability and structure.
 
-			We will include some of the more interesting results we came up with during the creation and testing of our final web app.
-			<br>
+      We also found that running flask remotely was extremely slow, so we set up an nginx server that used gunicorn to launch the flask code; this allowed us to quickly and easily deploy a production ready server.
+
+      <h2>Results</h2>
+      Because we focused on on creating a data exploration tool that could run machine learning jobs on the fly, instead of having a single deep result, we were able to come up with numerous shallower results and even give the power to any user to come up with interesting results on their own.
+
+      We will include some of the more interesting results we came up with during the creation and testing of our final web app.
+      <br>
       <br> We can see the trends for subreddits for popular tv shows to chart the growth and fluctuation of different seasons. Game of Thrones is a particularly obvious one. <br>
       <img src="asoif_popularity_over_time.png">
       <img src="gameofthrones_popularity_over_time.png"><br>
@@ -99,17 +101,18 @@ This not only makes the data easier to manage, it also reduces the amount of dat
 
       We can also graph this over time. We also graphed different reading levels for popular subreddits and found that worldnews and politics had the most "educated" language, while nfl and nba had the least. The point we'd like to get across is that because our tool performs calculations and aggregations on the fly, it is mostly exploratory, so that users can just query for whatever they want, and discover trends on their own.
 
-			<h2>Percent of Proposal Achieved</h2>
-			We believe we have achieved 115% out of our 125% of our project proposal. Our backend infrastructure and web app has many different features and is completely functional and has a aesthetic and intuitive UI. BigQuery was surprisingly quite fast, even though this still meant queries would still take ~10 seconds or so. Spark was unfortunately non-functional (which is why don't give ourselves the full 125%) and even if it was, we decided it would not have been fast enough to be worth using it to compute ML queries on the fly. 
-			<br>
-			We did a number of machine learning techniques, such as:<br><br>
+      <h2>Percent of Proposal Achieved</h2>
+      We believe we have achieved 115% out of our 125% of our project proposal. Our backend infrastructure and web app has many different features and is completely functional and has a aesthetic and intuitive UI. BigQuery was surprisingly quite fast, even though this still meant queries would still take ~10 seconds or so. Spark was unfortunately non-functional (which is why don't give ourselves the full 125%) and even if it was, we decided it would not have been fast enough to be worth using it to compute ML queries on the fly. 
+      <br>
+      We did a number of machine learning techniques, such as:<br><br>
 
       K-means<br>
       Topic Modeling<br>
       Reading Level<br>
       Sentiment Analysis<br>
       Logistic Regression<br>
-      Ridge Regression<br><br>
+      Ridge Regression<br>
+      LASSO<br><br>
 
       K-means and topic modeling were done to find clusters of topics for particular subreddits. K-means was relatively interesting, but topic modeling with many iterations was much better. <br><br>
 
@@ -119,25 +122,25 @@ This not only makes the data easier to manage, it also reduces the amount of dat
 
       Various types of regression were done to try to predict the karma of a comment, but the features we used for our set proved to be too simple, as this feature does not work very well. We used a bag of words model, where each word was a feature in a set. If we wanted to improve on this, we would take context into account for a particular comment, such as the subreddit it is from, the time of day, and the topic it is in response to.<br><br>
 
-			<h2>Future Topics</h2>
-			<h4>Interface, Useability, and Flexibility</h4>
-			We noticed partway through our project that our app sacrificed more intensive, in-depth queries for on-the-fly capabilities. We thought our project would be more impressive if we did not give it precomputed information, and instead was as flexible as possible to desired user queries. If we had more time, or if we were to work more on this project, we would like to explore more in-depth queries, possibly with Spark, and we could have made graphs that more accurately represent the whole of Reddit.
-			<br><br>
-			Our user experience with the querying process could definitely be improved upon. Instead of having fixed x and y axes for queries, we could let the user select each axis from a set of possible x's and y's and even let the user select which fields to group by for bar charts. We could also let the user combine similar queries to graph multiple things on the same graph, like having multiple lines on the line chart or different colors of bars on the bar chart.
-			<br><br>
-			One idea we had was to integrate Google trends data with ours, to see if Reddit's general trends followed search trends (or if some subreddits more closely match search trends than others, and possibly what in particular is shared between Google--which we assume to model the general trends of the entire internet--and a user-based content creation forum. We also thought it would be interesting to graph trending topics within subreddits to see if this could predict trends on other web-based content. A future topic would be to apply an algorithm (perhaps Twitter's or Facebook's) for finding "buzz" topics, or topics/phrases that are on the rise in terms of frequency within subreddits.
+      <h2>Future Topics</h2>
+      <h4>Interface, Useability, and Flexibility</h4>
+      We noticed partway through our project that our app sacrificed more intensive, in-depth queries for on-the-fly capabilities. We thought our project would be more impressive if we did not give it precomputed information, and instead was as flexible as possible to desired user queries. If we had more time, or if we were to work more on this project, we would like to explore more in-depth queries, possibly with Spark, and we could have made graphs that more accurately represent the whole of Reddit.
+      <br><br>
+      Our user experience with the querying process could definitely be improved upon. Instead of having fixed x and y axes for queries, we could let the user select each axis from a set of possible x's and y's and even let the user select which fields to group by for bar charts. We could also let the user combine similar queries to graph multiple things on the same graph, like having multiple lines on the line chart or different colors of bars on the bar chart.
+      <br><br>
+      One idea we had was to integrate Google trends data with ours, to see if Reddit's general trends followed search trends (or if some subreddits more closely match search trends than others, and possibly what in particular is shared between Google--which we assume to model the general trends of the entire internet--and a user-based content creation forum. We also thought it would be interesting to graph trending topics within subreddits to see if this could predict trends on other web-based content. A future topic would be to apply an algorithm (perhaps Twitter's or Facebook's) for finding "buzz" topics, or topics/phrases that are on the rise in terms of frequency within subreddits.
 
-			<h4>Technological Challenges and Proposed Solutions</h4>
-			In general, we had a lot of trouble handling such a large amount of data while providing the functionality of ad-hoc user queries. On the Solr end of things, even though Solr does provide indexing for more optimal text queries, there are still several drawbacks of using Solr. Even though it was built for large amounts of data, we put over 100GB of text data on a single Solr instance, where maybe we should've used a cluster instead. Additionally, Solr is meant to be used as an REST server for queries, so large amounts of data would have to travel over network. Solr wasn't as fast as we expected for returning a large amount of entire comments. What Solr did do well was compute aggregation type queries that encompassed the entirety of the dataset. 
-			<br><br>
-			Spark, on the other hand, provided us with much more challenges than Solr. First off, running Spark jobs on the fly was not very practical for our web application. The goal of our web application was to provide flexible queries to the user, like searching any word or phrase they want, but to do so in a responsive manner. Spark jobs inherently require a lot of overheard to get jobs running because of cluster management. Thus, no matter how many computational resources we could dedicate to our Spark cluster, we still wouldn't get the on-the-fly Spark jobs to be super responsive. Secondly, because we wanted to run Spark jobs on the fly we had to use the spark-jobserver library to harness Spark as a REST service, which was rather unwieldy to use. Configuring and launching was very unintuitive and riddled with bugs. Documentation to one unfamiliar with the technology was definitely lacking and there were few online resources about people with similar struggles as mine. Even Spark itself had a bug with the AWS launch script, which is why we had to use 1.6.0 instead of the latest version.
-			<br><br>
-			Lastly, using Spark as a REST service required us to use Scala as our coding language in Spark because no other languages have existing open-source libraries for such a service. The choice to use Scala added overhead of having to set up an SBT assembly project then having to manage the dependencies and versioning. We ran into trouble with serialization because the Spark driver has to serialize external libraries before sending tasks to its worker nodes. We had one specific problem with Stanford NLP in which if we tried to initialize the library in our Spark driver code, it couldn't serialize the library to the worker node. If we intialized the library in the code running on the worker nodes, we circumvented the serialization error but the large number of tasks the job was split into caused too large of a number of libraries being initialized and a significant performance decrease.
-			<br><br>
-			If we were to redesign our application's architecture we would first look into different ways of processing a large amount of data very responsively. Our current project uses the entirety of the data for aggregation queries, but only does relatively small random samples for queries involving machine learning because of the computational limits of running Python on a single machine. It might be possible to get significant speed increases on the storage end by using a distributed SQL database then creating materialized views that have schemas specifically designed to handle each type of query. If we stuck with Solr, we would experiment with using Solr in its cluster mode to see if using a cluster instead of a single instance would provide significant performance gains. If we were to stick with Spark we could also store raw comments in text form in HDFS, as Spark is meant to be used with HDFS and this pairing might let us load in much more data than some sort of database would.
-			<br><br>
-			On the Spark side of things, we might experiment with using Spark streaming instead of the standard Spark jobs. Spark streaming would mean that our application would run a single long-running streaming job instead of launching a new job upon each user query. This modification would get rid of the time overhead of starting a new job on each query and would make queries more responsive, but also brings in a slew of other technological challenges.
-		</div>
+      <h4>Technological Challenges and Proposed Solutions</h4>
+      In general, we had a lot of trouble handling such a large amount of data while providing the functionality of ad-hoc user queries. On the Solr end of things, even though Solr does provide indexing for more optimal text queries, there are still several drawbacks of using Solr. Even though it was built for large amounts of data, we put over 100GB of text data on a single Solr instance, where maybe we should've used a cluster instead. Additionally, Solr is meant to be used as an REST server for queries, so large amounts of data would have to travel over network. Solr wasn't as fast as we expected for returning a large amount of entire comments. What Solr did do well was compute aggregation type queries that encompassed the entirety of the dataset. 
+      <br><br>
+      Spark, on the other hand, provided us with much more challenges than Solr. First off, running Spark jobs on the fly was not very practical for our web application. The goal of our web application was to provide flexible queries to the user, like searching any word or phrase they want, but to do so in a responsive manner. Spark jobs inherently require a lot of overheard to get jobs running because of cluster management. Thus, no matter how many computational resources we could dedicate to our Spark cluster, we still wouldn't get the on-the-fly Spark jobs to be super responsive. Secondly, because we wanted to run Spark jobs on the fly we had to use the spark-jobserver library to harness Spark as a REST service, which was rather unwieldy to use. Configuring and launching was very unintuitive and riddled with bugs. Documentation to one unfamiliar with the technology was definitely lacking and there were few online resources about people with similar struggles as mine. Even Spark itself had a bug with the AWS launch script, which is why we had to use 1.6.0 instead of the latest version.
+      <br><br>
+      Lastly, using Spark as a REST service required us to use Scala as our coding language in Spark because no other languages have existing open-source libraries for such a service. The choice to use Scala added overhead of having to set up an SBT assembly project then having to manage the dependencies and versioning. We ran into trouble with serialization because the Spark driver has to serialize external libraries before sending tasks to its worker nodes. We had one specific problem with Stanford NLP in which if we tried to initialize the library in our Spark driver code, it couldn't serialize the library to the worker node. If we intialized the library in the code running on the worker nodes, we circumvented the serialization error but the large number of tasks the job was split into caused too large of a number of libraries being initialized and a significant performance decrease.
+      <br><br>
+      If we were to redesign our application's architecture we would first look into different ways of processing a large amount of data very responsively. Our current project uses the entirety of the data for aggregation queries, but only does relatively small random samples for queries involving machine learning because of the computational limits of running Python on a single machine. It might be possible to get significant speed increases on the storage end by using a distributed SQL database then creating materialized views that have schemas specifically designed to handle each type of query. If we stuck with Solr, we would experiment with using Solr in its cluster mode to see if using a cluster instead of a single instance would provide significant performance gains. If we were to stick with Spark we could also store raw comments in text form in HDFS, as Spark is meant to be used with HDFS and this pairing might let us load in much more data than some sort of database would.
+      <br><br>
+      On the Spark side of things, we might experiment with using Spark streaming instead of the standard Spark jobs. Spark streaming would mean that our application would run a single long-running streaming job instead of launching a new job upon each user query. This modification would get rid of the time overhead of starting a new job on each query and would make queries more responsive, but also brings in a slew of other technological challenges.
+    </div>
 </body>
 
 </html>
