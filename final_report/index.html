@@ -23,7 +23,7 @@
 				<div class="col-md-2"></div>
 				<div class="col-md-8">
 						<div class="page-header center">
-								<h1>Final Report: <small>&laquo;Reddata&raquo;</small></h1>
+								<h1>Final Report: <small>&laquo;Reddata&raquo;<img src="redditguy.png" style="width:50px;"></small></h1>
 						</div>
 
 			<h2>Members</h2>
@@ -52,7 +52,7 @@ Taffer,redditgw,1,2010-02-04T08:37:13Z,"I would be happy to join, not sure if I 
 
 This not only makes the data easier to manage, it also reduces the amount of data that we need to process.
 			<h2>Hypothesis</h2>
-
+			Our web application was meant as more of an exploratory sandbox tool because of its on-the-fly and flexible nature instead of being just a means of presenting precomputed results. Thus, we expect the user to mess around with the different queries to find out interesting results on their own about particular topics or subreddits they care about. That being said, we did have certain expectations about what kind of results we would see and what we wanted to learn about. We wanted to use reddit comments as a source of internet language so we could discover trends of certain words or topics over time. More specifically to reddit, we wanted the application to be a means of exploring differences between various popular subreddits in terms of word usage, sentiments, and other defining characteristics. 
 			<h2>Methodology</h2>
 			<h4>Data Integration</h4>
 			The data integration step involved moving the data out of BigQuery and into our Solr server. Solr is a document indexing search engine that allows users to insert a huge number of documents and specify indexing, and supports fast full text search. In theory, moving the data from BigQuery to Solr is simple; BigQuery allows users to download query results in CSV format and Solr allows CSV documents to be uploaded. However, the reality was more involved. We had to first register for Google Compute since our queries were too large to be downloaded directly, then we had to set up a script that could be run with <code>nohup</code> so that we could continuously upload files to Solr.
@@ -62,7 +62,7 @@ This not only makes the data easier to manage, it also reduces the amount of dat
 			We created our web application using Python flask. We launched an ec2 instance on AWS and set up our flask server there; this was convenient for us because we could use the machine learning libraries in Python, and because everyone was familair with Python. We set up a number of different server AJAX handlers for each visualization we wanted to display, and each visualization also had its own javascript file. in order to maintain readability and structure.
 
 			We also found that running flask remotely was extremely slow, so we set up an nginx server that used gunicorn to launch the flask code; this allowed us to quickly and easily deploy a production ready server.
-	
+
 			<h2>Results</h2>
 			Because we focused on on creating a data exploration tool that could run machine learning jobs on the fly, instead of having a single deep result, we were able to come up with numerous shallower results and even give the power to any user to come up with interesting results on their own.
 
@@ -100,7 +100,7 @@ This not only makes the data easier to manage, it also reduces the amount of dat
       We can also graph this over time. We also graphed different reading levels for popular subreddits and found that worldnews and politics had the most "educated" language, while nfl and nba had the least. The point we'd like to get across is that because our tool performs calculations and aggregations on the fly, it is mostly exploratory, so that users can just query for whatever they want, and discover trends on their own.
 
 			<h2>Percent of Proposal Achieved</h2>
-			We believe we have achieved 90% of our project proposal. Our web app has many different features and is mostly functional. BigQuery was surprisingly quite fast, even though this still meant queries would still take ~10 seconds or so. Spark was unfortunately non-functional and even if it was, we decided it would not have been fast enough to be worth using it to compute ML queries on the fly. 
+			We believe we have achieved 115% out of our 125% of our project proposal. Our backend infrastructure and web app has many different features and is completely functional and has a aesthetic and intuitive UI. BigQuery was surprisingly quite fast, even though this still meant queries would still take ~10 seconds or so. Spark was unfortunately non-functional (which is why don't give ourselves the full 125%) and even if it was, we decided it would not have been fast enough to be worth using it to compute ML queries on the fly. 
 			<br>
 			We did a number of machine learning techniques, such as:<br><br>
 
