@@ -62,39 +62,62 @@ This not only makes the data easier to manage, it also reduces the amount of dat
 			We created our web application using Python flask. We launched an ec2 instance on AWS and set up our flask server there; this was convenient for us because we could use the machine learning libraries in Python, and because everyone was familair with Python. We set up a number of different server AJAX handlers for each visualization we wanted to display, and each visualization also had its own javascript file. in order to maintain readability and structure.
 
 			We also found that running flask remotely was extremely slow, so we set up an nginx server that used gunicorn to launch the flask code; this allowed us to quickly and easily deploy a production ready server.
-
-			<h2>Challenges</h2>
-
 	
 			<h2>Results</h2>
 			Because we focused on on creating a data exploration tool that could run machine learning jobs on the fly, instead of having a single deep result, we were able to come up with numerous shallower results and even give the power to any user to come up with interesting results on their own.
 
 			We will include some of the more interesting results we came up with during the creation and testing of our final web app.
 			<br>
+      <br> We can see the trends for subreddits for popular tv shows to chart the growth and fluctuation of different seasons. Game of Thrones is a particularly obvious one. <br>
       <img src="asoif_popularity_over_time.png">
-      <img src="gameofthrones_popularity_over_time.png">
+      <img src="gameofthrones_popularity_over_time.png"><br>
+
+      We can also see the rise and pinpoint the inception of various common phrases, like "tree fiddy," a popular saying on reddit derived from a Southpark episode. We can also see the various average karmas associated with different phrases. Almost all comments center at 0, but there are some with fluctuations, such as more popular phrases, which tend to get a lot more upvotes. 
+
       <img src="treefiddy_karma_count.png"><br>
+      <br>
 
-      Topic Words <br>
-Topic 1 tax, time, first, man, stewart <br>
-Topic 2 pot, say, law <br>
-Topic 3 gay, government <br>
-Topic 4 just, america, corporate <br>
-Topic 5 americans, said, snowden, son, votes <br>
-Topic 6 american, amendment, congress, united <br>
-Topic 7 now, pay <br>
-Topic 8 elizabeth, warren, big, banks, republicans, million, sen <br>
-Topic 9 court, supreme, public, vote <br>
-Topic 10  run, jail, today <br>
+      Our machine learning data also reveals certain different trends in subreddits. <br><br>
 
-for subreddit: politics 2008-2012<br>
+      Results for topic modeling on the subreddit "politics" from data from 2008-2012<br>
+      Topic 1: tax, time, first, man, stewart <br>
+      Topic 2: pot, say, law <br>
+      Topic 3: gay, government <br>
+      Topic 4: just, america, corporate <br>
+      Topic 5: americans, said, snowden, son, votes <br>
+      Topic 6: american, amendment, congress, united <br>
+      Topic 7: now, pay <br>
+      Topic 8: elizabeth, warren, big, banks, republicans, million, sen <br>
+      Topic 9: court, supreme, public, vote <br>
+      Topic 10:  run, jail, today <br><br>
+
+      We can see see the differences in subreddits' opinion on various political figures. <br>
+      Results for sentiment analysis:<br>
+      <img src="obama_sentiment_subreddits.png"><br>      
+      <img src="sanders_2016_sentiment_subreddits.png"><br>      
+      <img src="trump_2016_sentiment_subreddits.png"><br>
+
+      We can also graph this over time. We also graphed different reading levels for popular subreddits and found that worldnews and politics had the most "educated" language, while nfl and nba had the least. The point we'd like to get across is that because our tool performs calculations and aggregations on the fly, it is mostly exploratory, so that users can just query for whatever they want, and discover trends on their own.
 
 			<h2>Percent of Proposal Achieved</h2>
-			We believe we have achieved 100% of our project proposal. Our web app has many different features and is mostly functional. BigQuery was surprisingly quite fast, even though this still meant queries would still take ~10 seconds or so. Spark was unfortunately non-functional and even if it was, we decided it would not have been fast enough to be worth using it to compute ML queries on the fly. 
+			We believe we have achieved 90% of our project proposal. Our web app has many different features and is mostly functional. BigQuery was surprisingly quite fast, even though this still meant queries would still take ~10 seconds or so. Spark was unfortunately non-functional and even if it was, we decided it would not have been fast enough to be worth using it to compute ML queries on the fly. 
 			<br>
-			For the ML that we did, we found interesting results for topic-modeling, reading levels, and sentiment analysis. <interesting surprises> 
-			<h4>Machine Learning</h4>
-			For the topic modeling portion, we were able to generate 5 topics and 5 words when we ran the python program on a set of data. 
+			We did a number of machine learning techniques, such as:<br><br>
+
+      K-means<br>
+      Topic Modeling<br>
+      Reading Level<br>
+      Sentiment Analysis<br>
+      Logistic Regression<br>
+      Ridge Regression<br><br>
+
+      K-means and topic modeling were done to find clusters of topics for particular subreddits. K-means was relatively interesting, but topic modeling with many iterations was much better. <br><br>
+
+      We found reading levels of different subreddits using the Flesch-Kincaid readability algorithm, which bases its results on a ratio between syllables to number of words and a ratio between total words to total sentences. We mentioned some of the results above.<br><br>
+
+      Sentiment analysis was done to understand different subreddits' opinions on various topics. <br><br>
+
+      Various types of regression were done to try to predict the karma of a comment, but the features we used for our set proved to be too simple, as this feature does not work very well. We used a bag of words model, where each word was a feature in a set. If we wanted to improve on this, we would take context into account for a particular comment, such as the subreddit it is from, the time of day, and the topic it is in response to.<br><br>
 
 			<h2>Future Topics</h2>
 			We noticed partway through our project that our app sacrificed more intensive, in-depth queries for on-the-fly capabilities. We thought our project would be more impressive if we did not give it precomputed information, and instead  
